@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-
+const { exchangeRates } = require('exchange-rates-api');
 
 
 // app config 
@@ -24,6 +24,13 @@ app.get('/', (req, res)=>{
     res.render('demo')
 })
 
-app.get('/exchangerate', (req, res)=>{
+app.post('/exchangerate', async (req, res)=>{
+    // console.log(req.body)
     // res.render('demo')
+    const {initial , ending , arrayOfSelecedIDs } = req.body
+    const data = await exchangeRates()
+        .from(initial).to(ending)
+        .symbols(arrayOfSelecedIDs)
+        .fetch();
+    res.json(data)
 })
