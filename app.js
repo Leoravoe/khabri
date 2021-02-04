@@ -21,5 +21,9 @@ app.listen(PORT, ()=>{
 
 // routes
 app.get('/', (req, res)=>{
-    res.send("Hello")
+    res.render('demo')
+})
+
+app.get('/exchangerate', (req, res)=>{
+    // res.render('demo')
 })

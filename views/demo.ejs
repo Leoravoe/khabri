@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    
+    <form id="myForm">
+        <h1>Money exchange rate for a given time</h1>
+        <label for="initial">starting date</label>
+        <input type="date" id="initial" name="initial" min="1980-01-01" max="2021-02-06">
+
+        <label for="ending">ending date</label>
+        <input type="date" id="ending" name="ending" min="1980-01-01" max="2021-02-06">
+        
+
+        <select onchange="getMultipleSelected(this.id)" multiple="multiple" name="languages[]" id="languages">
+            <option value="1">Afrikaans</option>
+            <option value="2">Albanian</option>
+            <option value="3">Amerindian</option>
+            <option value="4">Arabic</option>
+            <option value="5">Armenian</option>
+            <option value="6">Bahasa Indonesia</option>
+            <option value="7">Bahasa Indonesia</option>
+            <option value="8">Bahasa Indonesia</option>
+            <option value="9">Bahasa Indonesia</option>
+            <option value="10">Bahasa Indonesia</option>
+            <option value="11">Bahasa Indonesia</option>
+            <option value="12">Bahasa Indonesia</option>
+            <option value="13">Bahasa Indonesia</option>
+            <option value="14">Bahasa Indonesia</option>
+            <option value="15">Bahasa Indonesia</option>
+            <option value="16">Bahasa Indonesia</option>
+            <option value="17">Bahasa Indonesia</option>
+            <option value="18">Bahasa Indonesia</option>
+            <option value="19">Bahasa Indonesia</option>
+            <option value="20">Bahasa Indonesia</option>
+            <option value="21">Bahasa Indonesia</option>
+            <option value="22">Bahasa Indonesia</option>
+            <option value="23">Bahasa Indonesia</option>
+            <option value="24">Bahasa Indonesia</option>
+            <option value="25">Bahasa Indonesia</option>
+            <option value="26">Bahasa Indonesia</option>
+            <option value="27">Bahasa Indonesia</option>
+            <option value="28">Bahasa Indonesia</option>
+            <option value="29">Bahasa Indonesia</option>
+            <option value="30">Bahasa Indonesia</option>
+            <option value="31">Bahasa Indonesia</option>
+            <option value="32">Bahasa Indonesia</option>
+            <option value="33">Bahasa Indonesia</option>
+
+            <input type="submit">
+        
+        </select>
+        </form>
+        <p>Press CTRL and click above button to select multiple options at once.</p>
+        <p id="p"></p>
+        <p id="p1"></p>
+        <script>
+            document.getElementById("myForm").addEventListener("submit", async (evt) => {
+                evt.preventDefault();
+                document.getElementById("p").innerHTML = document.getElementById("initial").value
+                document.getElementById("p1").innerHTML = document.getElementById("ending").value
+            })
+            function getMultipleSelected(fieldID){
+            
+            // fieldID is id set on select field
+
+            // get the select element
+            var elements = document.getElementById(fieldID).childNodes; 
+            // console.log(elements.length);
+
+            // if we want to use key=>value of selected element we will set this object
+            var selectedKeyValue = {};
+
+            // if we want to use only array of selected values we will set this array
+            var arrayOfSelecedIDs=[];
+
+            // loop over option values
+            for(i=0;i<elements.length;i++){
+
+                console.log(elements[i])
+                // if option is select then push it to object or array
+                if(elements[i].selected){
+                    //push it to object as selected key->value 
+                    selectedKeyValue[elements[i].value]=elements[i].textContent;
+                    //push to array of selected values
+                    arrayOfSelecedIDs.push(elements[i].value)
+
+                }
+                
+            }
+            
+            // output or do seomething else with these values :)
+            // check your console log
+            console.log(selectedKeyValue);
+
+            console.log(arrayOfSelecedIDs);
+            
+        }
+        </script>
+    </body>
+</html>
